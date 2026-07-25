@@ -24,6 +24,7 @@ Thumbs.db
 # Editor
 .idea/
 .vscode/
+graphify-out/
 *.swp
 
 # Runtime data — never commit installation state
