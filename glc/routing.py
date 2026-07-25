@@ -9,14 +9,7 @@ from collections import defaultdict, deque
 
 LIMITS = {
     "ollama": {"rpm": 9999, "rpd": 9999999, "tpm": 99999999, "cooldown": 0, "max_ctx": 32000},
-    "cerebras": {
-        "rpm": 30,
-        "rpd": 9999,
-        "tpm": 60000,
-        "cooldown": 2,
-        "max_ctx": 8000,
-        "tokens_per_day": 1_000_000,
-    },
+    "cerebras": {"rpm": 30, "rpd": 9999, "tpm": 60000, "cooldown": 2, "max_ctx": 8000, "tokens_per_day": 1_000_000},
     "groq": {"rpm": 30, "rpd": 1000, "tpm": 6000, "cooldown": 2, "max_ctx": 100000},
     "nvidia": {"rpm": 40, "rpd": 9999, "tpm": 100000, "cooldown": 2, "max_ctx": 100000},
     "gemini": {"rpm": 15, "rpd": 500, "tpm": 250000, "cooldown": 4, "max_ctx": 1000000},
