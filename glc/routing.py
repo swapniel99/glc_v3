@@ -19,7 +19,7 @@ LIMITS = {
     },
     "groq": {"rpm": 30, "rpd": 1000, "tpm": 6000, "cooldown": 2, "max_ctx": 100000},
     "nvidia": {"rpm": 40, "rpd": 9999, "tpm": 100000, "cooldown": 2, "max_ctx": 100000},
-    "gemini": {"rpm": 15, "rpd": 1000, "tpm": 250000, "cooldown": 4, "max_ctx": 1000000},
+    "gemini": {"rpm": 15, "rpd": 500, "tpm": 250000, "cooldown": 4, "max_ctx": 1000000},
     "openrouter": {"rpm": 20, "rpd": 50, "tpm": 99999999, "cooldown": 3, "max_ctx": 100000},
     "github": {"rpm": 10, "rpd": 50, "tpm": 99999999, "cooldown": 6, "max_ctx": 8000},
 }
