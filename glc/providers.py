@@ -1173,7 +1173,7 @@ def build_providers(cache_store):
     ]
     if not gemini_pool and (key := os.getenv("GEMINI_API_KEY")):
         gemini_pool = [key]
-    gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
+    gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
     for i, key in enumerate(gemini_pool, start=1):
         out[f"gemini_{i}"] = GeminiProvider(key, gemini_model, cache_store)
         _LIMITS[f"gemini_{i}"] = dict(_LIMITS["gemini"])
