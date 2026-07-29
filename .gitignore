@@ -24,6 +24,7 @@ Thumbs.db
 # Editor
 .idea/
 .vscode/
+.tokensave/
 graphify-out/
 *.swp
 
