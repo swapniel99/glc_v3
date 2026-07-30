@@ -308,7 +308,7 @@ async function runTest() {
   const out = document.getElementById('test-out');
   out.textContent = '⏳ sending…';
   try {
-    const body = {prompt, provider, max_tokens: 200};
+    const body = {prompt, provider, max_tokens: 2048};
     if (auto_route) body.auto_route = auto_route;
     const r = await fetch('/v1/chat', {
       method: 'POST', headers: {'Content-Type': 'application/json'},
