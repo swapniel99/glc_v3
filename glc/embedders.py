@@ -137,7 +137,7 @@ class OllamaEmbedder(EmbeddingProvider):
     async def embed(self, text: str, task_type: TaskType) -> dict:
         # nomic-embed-text requires a task prefix for retrieval quality.
         prefix = "search_query: " if task_type == "retrieval_query" else "search_document: "
-        body = {"model": self.model, "prompt": prefix + text}
+        body = {"model": self.model, "prompt": prefix + text, "options": {"num_ctx": 2048}}
         async with httpx.AsyncClient(timeout=60) as c:
             r = await c.post(f"{self.base_url}/api/embeddings", json=body)
         if r.status_code != 200:
