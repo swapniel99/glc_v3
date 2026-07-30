@@ -29,7 +29,7 @@ from typing import Literal
 import httpx
 
 TaskType = Literal["retrieval_document", "retrieval_query"]
-EMBED_DIM = 768  # both providers are pinned to this
+EMBED_DIM = int(os.getenv("EMBED_DIM", "768"))
 
 # Hard input ceiling. gemini-embedding-001 caps text inputs at ~2048 tokens
 # (≈8000 chars at 4 chars/token). The gateway rejects oversize inputs with
@@ -199,6 +199,7 @@ def build_embedders() -> tuple[list[EmbeddingProvider], list[str]]:
 
     fallback_provider = os.getenv("EMBED_FALLBACK_PROVIDER", "gemini").lower()
     fallback_model = os.getenv("EMBED_FALLBACK_MODEL", "gemini-embedding-001")
+    embed_dim = int(os.getenv("EMBED_DIM", str(EMBED_DIM)))
 
     registry: dict[str, EmbeddingProvider] = {
         "ollama": OllamaEmbedder(ollama_model, ollama_url),
@@ -206,7 +207,7 @@ def build_embedders() -> tuple[list[EmbeddingProvider], list[str]]:
     if fallback_provider == "gemini":
         key = os.getenv("GEMINI_API_KEY")
         if key:
-            registry["gemini"] = GeminiEmbedder(key, fallback_model)
+            registry["gemini"] = GeminiEmbedder(key, fallback_model, output_dim=embed_dim)
 
     default_order = ["ollama", fallback_provider]
     order_env = os.getenv("EMBED_ORDER", ",".join(default_order))
